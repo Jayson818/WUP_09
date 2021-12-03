@@ -14,9 +14,26 @@ require(tigerstats)
 require(tidyverse)
 ```
 
+```{r}
+fish=read.csv("Fish.csv")
+```
+
+
 # Introduction
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?!-->
+
+Build the best regression model you can to predict the weight of Perch,Pike and roach  that uses two predictor variables. We are trying to find the best two variables to predict the weight of each type of fish.
+
+## Perch
+
+# Methods
+
+
+
+
+
+
 
 ## Build the best regression model you can that predicts the weight of perch
 ## Using only two predictor variables  
