@@ -58,14 +58,10 @@ basicNN <- ggplot(Pike,aes(y=Weight,x=Length1))
 basicNN + geom_point()
 ```
 
- The scatterplot shows that as the weight of Pike goes up,it length1 also goes up.  This means that weight is a good determining factor for length1,and vice versa,length1 is a good determining factor for predicting weight.
+ The scatter plot shows that as the Length1 of a Perch goes up,it's length also goes up.  This means that length1 is a good determining factor for weight,and vice versa,weight of a Perch is a good determining factor for predicting Length1.  
+  
+Both graphs show that as length1 increases ,weight follows and increases as well. It looks like a straight line is not a great fit because most of the points don't fall evenly around the blue line. We still need more tests to find the best two variables. 
  
-
-```{r}
-basicNN + geom_point() + geom_smooth(method=lm)
-```
- 
-      Both graphs show that as length1 increases weight follows and increases as well. It looks like a straight line is not a great fit because most of the points don't fall evenly around the blue line. We need more tests to find the best two variables.
 
 ### Numerical Descriptive Results
 
@@ -92,29 +88,30 @@ The graph shows that the Y axis is adjusted R squared, and the X axis is the num
 ```{r}
 which.max(summary.out$adjr2)
 ```
+
 ```{r}
 summary.out$which[2,]
 ```
 
-the summary shows which two variables are best out of the four variables we have, which is Length3 and Length1
+the summary shows which two variables are best, which is Height and Width.
 
 ```{r}
-best.model <- lm(Weight~Length3+Length1,data=Pike)
+best.model <- lm(Weight~Height+Width,data=Perch)
 summary(best.model)
-fullup=lm(Weight~.,data= select (Pike, -Species))
+fullup=lm(Weight~.,data= select (Perch, -Species))
 ```
 
-We made a linear model based on height and width;it shows that the best prediction for weight=-1675.79 +141.25 * Length3 + (-105.62) *Length1.
+width;it shows that the best prediction for weight=-536 + 74.77 * Height +69.62 *width.
 
-This equation is the best fit for predicting the weight of the Pike using the two variables ,Length3 and Length1.
+This equation is the best fit for predicting the weight of the perch using the two variables ,width and Height.
 
 ## Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
-$H_0$:there is no difference between models 1 and 2 when predicting the Weight of the fish (Pike)
+$H_0$:there is no difference between models 1 and 2 when predicting the Weight of the fish (Perch)
 
-$H_A$:there is a difference between models 1 and 2 when predicting the Weight of the fish (Pike)
+$H_A$:there is a difference between models 1 and 2 when predicting the Weight of the fish (Perch)
 
 ```{r}
 anova(fullup,best.model)
@@ -125,3 +122,18 @@ This analysis of Variance table basically shows that model 1 is slightly better 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+We fail to reject the Null hypothesis because the P value is high at 0.879. We conclude that Length3 and Length1 are the two best variables when predicting weight of a Pike if using just two variables.
+
+## Roach
+
+# Methods
+
+<!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
+
+obtains subset of fish with the species we want to analyze ,than we will look at how well each combination of the predictor variables  can predict the weight of the fish. We are using the Roach subset in this analysis.
+
+```{r}
+Roach =filter(fish,Species=="Roach")
+```
+
