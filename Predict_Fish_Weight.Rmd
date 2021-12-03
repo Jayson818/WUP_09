@@ -29,7 +29,9 @@ Build the best regression model you can to predict the weight of Perch,Pike and 
 
 # Methods
 
+<!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
+obtain subset of fish with the species we want to analyze ,than we will look at how well each combination of the predictor variables can predict the weight of the fish. We are using the perch subset in this analysis.
 
 
 
