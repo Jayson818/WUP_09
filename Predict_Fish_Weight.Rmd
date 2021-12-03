@@ -34,7 +34,7 @@ Build the best regression model you can to predict the weight of Perch,Pike and 
 obtain subset of fish with the species we want to analyze ,than we will look at how well each combination of the predictor variables can predict the weight of the fish. We are using the perch subset in this analysis.
 
 ```{r}
-Pike =filter(fish,Species=="Pike")
+Perch =filter(fish,Species=="Perch")
 ```
 
 #Results
@@ -49,7 +49,7 @@ Pike =filter(fish,Species=="Pike")
 
 
 ```{r}
-basicNN <- ggplot(Pike,aes(y=Weight,x=Length1))
+basicNN <- ggplot(Perch,aes(y=Weight,x=Length1))
 ```
 
 ## Now add in scatterplot
@@ -71,7 +71,7 @@ Both graphs show that as length1 increases ,weight follows and increases as well
 library(leaps)
 regsubsets.out <-
     regsubsets(Weight ~ .,
-               data = select (Pike,-Species),
+               data = select (Perch,-Species),
                nbest = 1,       # 1 best model for each number of predictors
                nvmax = NULL,    # NULL for no limit on number of variables
                force.in = NULL, force.out = NULL,
